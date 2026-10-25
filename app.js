@@ -2,8 +2,8 @@
 // ejecución real del validador contra GraphDB (exportar_datos.py), y arma las
 // mismas tres pantallas que la app de Streamlit (Figuras 6 a 9 del TFG).
 
-// Proyecto que muestra el paso 2 de Integración, como en la Figura 9.
-const PROYECTO_VALIDADOR = "compliancetech/validador";
+// Proyecto validador en GitLab, para el paso 2 de Integración.
+const PROYECTO_VALIDADOR = "nicolasjcozzarin/validador";
 
 const FICHAS = {
   "ficha-v1.ttl": "ficha-v1.ttl · ejemplo conforme",
