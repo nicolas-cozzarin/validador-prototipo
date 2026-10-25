@@ -105,10 +105,12 @@ function ejecuciones() {
 }
 
 function resultado(run, fallas, ok, esPipeline) {
+  // La paridad de esta ejecución es lo que obtuvo R5, guardado con la ejecución.
+  const paridad = run.reglas.find((r) => r.id === "R5").observed;
   const decision = esPipeline ? (ok ? "Autorizado" : "Bloqueado") : "No aplica";
   return banner(ok, fallas, esPipeline) + cards([
     ["Reglas conformes", `${run.reglas.length - fallas.length}/${run.reglas.length}`, `Reglas v${run.rulesVersion}`, false],
-    ["Paridad demográfica (sexo)", dec(run.dpd), `Umbral ${datos.umbralTexto}`, fallas.includes("R5")],
+    ["Paridad demográfica (sexo)", paridad, `Umbral ${datos.umbralTexto}`, fallas.includes("R5")],
     ["Despliegue", decision, esPipeline ? "Job compliance-check" : "Validación sin despliegue", esPipeline && !ok],
   ]) + tablaReglas(run.reglas) + `
     <div class="fila-doble">
@@ -122,13 +124,14 @@ function historial() {
   const { consulta, filas } = datos.historial[`${estado.cliente}|${estado.modelo}`];
   const porVersion = new Map();
   filas.forEach((h) => { if (!porVersion.has(h.versionLabel)) porVersion.set(h.versionLabel, h); });
+  // dpd es el Obtenido de R5 ("0,14" o "Ausente"). El color sale del resultado de R5.
   const items = [...porVersion].sort(([a], [b]) => a.localeCompare(b)).map(([v, h]) =>
-    [v, h.dpd || 0, dec(h.dpd), h.dpd && Number(h.dpd) <= datos.umbral ? "ok" : "ko"]);
+    [v, h.dpd === "Ausente" ? 0 : Number(h.dpd.replace(",", ".")), h.dpd, h.r5Outcome.endsWith("#Conformant") ? "ok" : "ko"]);
   const cuerpo = filas.map((h) => {
     const bien = h.conforms === "true";
     const donde = h.origin === "pipeline" ? (h.pipelineId ? `#${esc(h.pipelineId)}` : "pipeline") : esc(h.origin);
     return `<tr${bien ? "" : ' class="ct-fail"'}><td class="name"><b>${esc(h.versionLabel)}</b></td><td>${fecha(h.executedAt)}</td>
-      <td class="obs">${dec(h.dpd)}</td><td>${5 - Number(h.failedRules)}/5</td><td>${donde}</td><td>${pill(bien)}</td></tr>`;
+      <td class="obs">${esc(h.dpd)}</td><td>${5 - Number(h.failedRules)}/5</td><td>${donde}</td><td>${pill(bien)}</td></tr>`;
   }).join("");
   return `<div class="historial">${barras(`Paridad demográfica por versión · umbral ${datos.umbralTexto}`, items, 0.25)}
     <div class="tabla"><table class="ct-table"><tr><th>Versión</th><th>Fecha</th><th>Paridad</th><th>Reglas</th><th>Origen</th>
