@@ -1,0 +1,266 @@
+{
+ "generado": "2026-10-25T09:15:54+00:00",
+ "graphdb": "GraphDB 10.8.14",
+ "rulesVersion": "1.0",
+ "umbral": 0.1,
+ "umbralTexto": "≤ 0,10",
+ "reglas": [
+  {
+   "id": "R1",
+   "label": "Categoría de riesgo",
+   "legal_basis": "Art. 6, Anexo III",
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32024R1689#art_6"
+  },
+  {
+   "id": "R2",
+   "label": "Documentación técnica",
+   "legal_basis": "Art. 11, Anexo IV",
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32024R1689#art_11"
+  },
+  {
+   "id": "R3",
+   "label": "Registro de eventos",
+   "legal_basis": "Art. 12",
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32024R1689#art_12"
+  },
+  {
+   "id": "R4",
+   "label": "Supervisión humana",
+   "legal_basis": "Art. 14",
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32024R1689#art_14"
+  },
+  {
+   "id": "R5",
+   "label": "Paridad demográfica",
+   "legal_basis": "Art. 10.2.f-g",
+   "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32024R1689#art_10"
+  }
+ ],
+ "ejecuciones": [
+  {
+   "run": "https://compliancetech.example/id/banco-aurora/clasificador-credito/v2/run/20261025T091553Z-45d197",
+   "version": "https://compliancetech.example/id/banco-aurora/clasificador-credito/v2",
+   "clientId": "banco-aurora",
+   "provider": "Banco Aurora",
+   "modelId": "clasificador-credito",
+   "modelName": "Clasificador de crédito",
+   "versionLabel": "v2",
+   "purpose": "Evaluación de solvencia de personas físicas",
+   "annexIIIPoint": "5.b",
+   "origin": "pipeline",
+   "executedAt": "2026-10-25T09:15:53+00:00",
+   "rulesVersion": "1.0",
+   "conforms": "false",
+   "dpd": "0.1455",
+   "reglas": [
+    {
+     "id": "R1",
+     "ok": true,
+     "observed": "Alto riesgo",
+     "expected": "Alto riesgo"
+    },
+    {
+     "id": "R2",
+     "ok": true,
+     "observed": "4 de 4 campos",
+     "expected": "4 campos del Anexo IV"
+    },
+    {
+     "id": "R3",
+     "ok": true,
+     "observed": "Habilitado y guardado",
+     "expected": "Habilitado y guardado"
+    },
+    {
+     "id": "R4",
+     "ok": true,
+     "observed": "Medida y responsable",
+     "expected": "Medida y responsable"
+    },
+    {
+     "id": "R5",
+     "ok": false,
+     "observed": "0,15",
+     "expected": "≤ 0,10"
+    }
+   ],
+   "tasas": [
+    {
+     "group": "Hombres",
+     "rate": "0.9638"
+    },
+    {
+     "group": "Mujeres",
+     "rate": "0.8182"
+    }
+   ],
+   "reporte": "@prefix ns1: <http://rdf4j.org/shacl-extensions#> .\n@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms false ;\n    sh:result [ a sh:ValidationResult ;\n            ns1:shapesGraph <http://rdf4j.org/schema/rdf4j#nil> ;\n            sh:focusNode <https://compliancetech.example/id/banco-aurora/clasificador-credito/v2> ;\n            sh:resultMessage \"R5: la paridad demográfica supera el umbral de 0,10 o falta la medición\" ;\n            sh:resultPath [ ] ;\n            sh:resultSeverity sh:Violation ;\n            sh:sourceConstraintComponent sh:MaxInclusiveConstraintComponent ;\n            sh:sourceShape <https://compliancetech.example/ontology#R5-parity> ;\n            sh:value 0.1455 ] .\n\n"
+  },
+  {
+   "run": "https://compliancetech.example/id/banco-aurora/clasificador-credito/v1/run/20261025T091550Z-61f560",
+   "version": "https://compliancetech.example/id/banco-aurora/clasificador-credito/v1",
+   "clientId": "banco-aurora",
+   "provider": "Banco Aurora",
+   "modelId": "clasificador-credito",
+   "modelName": "Clasificador de crédito",
+   "versionLabel": "v1",
+   "purpose": "Evaluación de solvencia de personas físicas",
+   "annexIIIPoint": "5.b",
+   "origin": "pipeline",
+   "executedAt": "2026-10-25T09:15:50+00:00",
+   "rulesVersion": "1.0",
+   "conforms": "true",
+   "dpd": "0.0125",
+   "reglas": [
+    {
+     "id": "R1",
+     "ok": true,
+     "observed": "Alto riesgo",
+     "expected": "Alto riesgo"
+    },
+    {
+     "id": "R2",
+     "ok": true,
+     "observed": "4 de 4 campos",
+     "expected": "4 campos del Anexo IV"
+    },
+    {
+     "id": "R3",
+     "ok": true,
+     "observed": "Habilitado y guardado",
+     "expected": "Habilitado y guardado"
+    },
+    {
+     "id": "R4",
+     "ok": true,
+     "observed": "Medida y responsable",
+     "expected": "Medida y responsable"
+    },
+    {
+     "id": "R5",
+     "ok": true,
+     "observed": "0,01",
+     "expected": "≤ 0,10"
+    }
+   ],
+   "tasas": [
+    {
+     "group": "Hombres",
+     "rate": "0.9147"
+    },
+    {
+     "group": "Mujeres",
+     "rate": "0.9272"
+    }
+   ],
+   "reporte": "@prefix sh: <http://www.w3.org/ns/shacl#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n[] a sh:ValidationReport ;\n    sh:conforms true .\n\n"
+  }
+ ],
+ "historial": {
+  "banco-aurora|clasificador-credito": {
+   "consulta": "PREFIX ct: <https://compliancetech.example/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?run ?versionLabel ?executedAt ?dpd ?conforms ?origin ?pipelineId (COUNT(?failed) AS ?failedRules)\nWHERE {\n  GRAPH <https://compliancetech.example/id/graph/runs> {\n    ?run a ct:ValidationRun ; ct:validatedVersion ?version ;\n         ct:executedAt ?executedAt ; ct:origin ?origin ; ct:conforms ?conforms .\n    OPTIONAL { ?run ct:pipelineId ?pipelineId }\n    OPTIONAL { ?run ct:failedRule ?failed }\n  }\n  FILTER (?origin != \"evaluacion\")\n  ?version ct:clientId \"banco-aurora\" ; ct:modelId \"clasificador-credito\" ; ct:versionLabel ?versionLabel .\n  OPTIONAL { ?version ct:hasFairnessMeasurement/ct:demographicParityDifference ?dpd }\n}\nGROUP BY ?run ?versionLabel ?executedAt ?dpd ?conforms ?origin ?pipelineId\nORDER BY DESC(?executedAt)",
+   "filas": [
+    {
+     "run": "https://compliancetech.example/id/banco-aurora/clasificador-credito/v2/run/20261025T091553Z-45d197",
+     "versionLabel": "v2",
+     "executedAt": "2026-10-25T09:15:53+00:00",
+     "dpd": "0.1455",
+     "conforms": "false",
+     "origin": "pipeline",
+     "failedRules": "1"
+    },
+    {
+     "run": "https://compliancetech.example/id/banco-aurora/clasificador-credito/v1/run/20261025T091550Z-61f560",
+     "versionLabel": "v1",
+     "executedAt": "2026-10-25T09:15:50+00:00",
+     "dpd": "0.0125",
+     "conforms": "true",
+     "origin": "pipeline",
+     "failedRules": "0"
+    }
+   ]
+  }
+ },
+ "manual": {
+  "ficha-v1.ttl": {
+   "model_name": "Clasificador de crédito",
+   "version_label": "v1",
+   "rules_version": "1.0",
+   "conforms": true,
+   "failed_rules": [],
+   "reglas": [
+    {
+     "id": "R1",
+     "ok": true,
+     "observed": "Alto riesgo",
+     "expected": "Alto riesgo"
+    },
+    {
+     "id": "R2",
+     "ok": true,
+     "observed": "4 de 4 campos",
+     "expected": "4 campos del Anexo IV"
+    },
+    {
+     "id": "R3",
+     "ok": true,
+     "observed": "Habilitado y guardado",
+     "expected": "Habilitado y guardado"
+    },
+    {
+     "id": "R4",
+     "ok": true,
+     "observed": "Medida y responsable",
+     "expected": "Medida y responsable"
+    },
+    {
+     "id": "R5",
+     "ok": true,
+     "observed": "0,06",
+     "expected": "≤ 0,10"
+    }
+   ]
+  },
+  "ficha-v2.ttl": {
+   "model_name": "Clasificador de crédito",
+   "version_label": "v2",
+   "rules_version": "1.0",
+   "conforms": false,
+   "failed_rules": [
+    "R5"
+   ],
+   "reglas": [
+    {
+     "id": "R1",
+     "ok": true,
+     "observed": "Alto riesgo",
+     "expected": "Alto riesgo"
+    },
+    {
+     "id": "R2",
+     "ok": true,
+     "observed": "4 de 4 campos",
+     "expected": "4 campos del Anexo IV"
+    },
+    {
+     "id": "R3",
+     "ok": true,
+     "observed": "Habilitado y guardado",
+     "expected": "Habilitado y guardado"
+    },
+    {
+     "id": "R4",
+     "ok": true,
+     "observed": "Medida y responsable",
+     "expected": "Medida y responsable"
+    },
+    {
+     "id": "R5",
+     "ok": false,
+     "observed": "0,14",
+     "expected": "≤ 0,10"
+    }
+   ]
+  }
+ }
+}

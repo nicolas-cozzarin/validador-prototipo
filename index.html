@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validador · ComplianceTech Europa</title>
+  <meta name="description" content="Vista del prototipo del TFG: validador de cumplimiento del Reglamento de IA (reglas R1 a R5) con datos de una ejecución real.">
+  <link rel="icon" href="logo-icono.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <aside class="lateral">
+    <img class="logo" src="logo.svg" alt="Validador · ComplianceTech Europa" width="220" height="40">
+    <nav class="menu" aria-label="Pantallas">
+      <a href="#ejecuciones" data-pagina="ejecuciones">Ejecuciones</a>
+      <a href="#validacion-manual" data-pagina="validacion-manual">Validación manual</a>
+      <a href="#integracion" data-pagina="integracion">Integración</a>
+    </nav>
+    <div id="selectores"></div>
+    <p class="pie">Prototipo TFG · Datos de ejemplo</p>
+  </aside>
+
+  <main>
+    <div class="aviso-estatico">
+      <b>Vista estática del prototipo.</b>
+      Los datos salen de una ejecución real del validador contra GraphDB 10.8
+      (<span id="fecha-datos"></span>), con los mismos pasos que el pipeline del Banco Aurora
+      corriendo en una computadora. El prototipo completo, con GraphDB y validación en vivo,
+      se instala con Docker siguiendo el README del repositorio validador.
+    </div>
+    <div id="pagina"><p class="ct-meta">Cargando…</p></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

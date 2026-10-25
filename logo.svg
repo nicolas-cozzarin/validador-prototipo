@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="40" viewBox="0 0 220 40">
+  <path d="M13 6 L23 10 V18 C23 25 18.5 30 13 32 C7.5 30 3 25 3 18 V10 Z" fill="none" stroke="#1A1F29" stroke-width="2" stroke-linejoin="round"/>
+  <text x="34" y="19" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#212630">Validador</text>
+  <text x="34" y="34" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#667080">ComplianceTech Europa</text>
+</svg>
